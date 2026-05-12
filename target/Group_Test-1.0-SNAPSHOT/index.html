@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< Updated upstream
     <title>Uni-Run | System Design & Proposal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -33,10 +34,36 @@
                 <button onclick="switchTab(this, 'erd')" class="nav-btn px-2 py-1">Database</button>
                 <button onclick="switchTab(this, 'flow')" class="nav-btn px-2 py-1">Flow</button>
                 <button onclick="switchTab(this, 'mockups')" class="nav-btn px-2 py-1 text-white bg-white/10 rounded-full px-4">Live Preview</button>
+=======
+    <title>Uni-Run System Storyboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .page-node { border: 2px solid #e2e8f0; border-radius: 8px; padding: 15px; margin-bottom: 20px; background: white; }
+        .flow-arrow { text-align: center; font-size: 24px; color: #64748b; margin: 10px 0; }
+        .erd-table { border: 2px solid #3b82f6; border-radius: 8px; overflow: hidden; }
+        .erd-header { background: #3b82f6; color: white; padding: 8px; font-weight: bold; }
+        .erd-row { padding: 4px 8px; border-bottom: 1px solid #e2e8f0; font-family: monospace; font-size: 0.9rem; }
+        .erd-row:last-child { border-bottom: none; }
+        .pk { color: #e11d48; font-weight: bold; }
+        .fk { color: #059669; font-weight: bold; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Navigation Tab System -->
+    <nav class="bg-blue-600 text-white p-4 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">Uni-Run Storyboard & Design</h1>
+            <div class="space-x-4">
+                <button onclick="showSection('erd')" class="hover:bg-blue-700 px-3 py-1 rounded">1. Database ERD</button>
+                <button onclick="showSection('flow')" class="hover:bg-blue-700 px-3 py-1 rounded">2. Application Flow</button>
+                <button onclick="showSection('mockups')" class="hover:bg-blue-700 px-3 py-1 rounded">3. UI Mockups</button>
+>>>>>>> Stashed changes
             </div>
         </div>
     </nav>
 
+<<<<<<< Updated upstream
     <div class="container mx-auto p-6 max-w-6xl">
         
         <!-- SECTION 1: PROPOSAL -->
@@ -89,10 +116,92 @@
                             </div>
                         </div>
                     </div>
+=======
+    <div class="container mx-auto p-6">
+        
+        <!-- SECTION 1: DATABASE ERD -->
+        <section id="erd" class="section-content">
+            <h2 class="text-2xl font-bold mb-6 text-blue-800">Database Entity Relationship Diagram (ERD)</h2>
+            <p class="mb-4 text-slate-600 italic">Following the requirement of at least 4 tables.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Users Table -->
+                <div class="erd-table bg-white">
+                    <div class="erd-header">Users (Account)</div>
+                    <div class="erd-row"><span class="pk">PK</span> userID (INT)</div>
+                    <div class="erd-row">username (VARCHAR)</div>
+                    <div class="erd-row">password (VARCHAR)</div>
+                    <div class="erd-row">role (ENUM: 'ADMIN', 'RUNNER')</div>
+                </div>
+
+                <!-- Participants Table -->
+                <div class="erd-table bg-white">
+                    <div class="erd-header">Participants</div>
+                    <div class="erd-row"><span class="pk">PK</span> participantID (INT)</div>
+                    <div class="erd-row"><span class="fk">FK</span> userID (INT)</div>
+                    <div class="erd-row">fullName (VARCHAR)</div>
+                    <div class="erd-row">gender (CHAR)</div>
+                    <div class="erd-row">age (INT)</div>
+                    <div class="erd-row">email (VARCHAR)</div>
+                </div>
+
+                <!-- Events Table -->
+                <div class="erd-table bg-white">
+                    <div class="erd-header">Events</div>
+                    <div class="erd-row"><span class="pk">PK</span> eventID (INT)</div>
+                    <div class="erd-row">eventName (VARCHAR)</div>
+                    <div class="erd-row">date (DATE)</div>
+                    <div class="erd-row">distanceKM (DOUBLE)</div>
+                    <div class="erd-row">location (VARCHAR)</div>
+                </div>
+
+                <!-- Registrations/Results Table -->
+                <div class="erd-table bg-white">
+                    <div class="erd-header">Registrations</div>
+                    <div class="erd-row"><span class="pk">PK</span> regID (INT)</div>
+                    <div class="erd-row"><span class="fk">FK</span> participantID (INT)</div>
+                    <div class="erd-row"><span class="fk">FK</span> eventID (INT)</div>
+                    <div class="erd-row">bibNumber (VARCHAR)</div>
+                    <div class="erd-row">finishTime (TIME)</div>
+                    <div class="erd-row">status (VARCHAR)</div>
+                </div>
+            </div>
+
+            <div class="mt-8 p-4 bg-blue-100 rounded-lg text-sm">
+                <strong>Relationships:</strong>
+                <ul class="list-disc ml-6 mt-2">
+                    <li>One <b>User</b> has one <b>Participant</b> profile (1:1).</li>
+                    <li>One <b>Participant</b> can have many <b>Registrations</b> (1:N).</li>
+                    <li>One <b>Event</b> can have many <b>Registrations</b> (1:N).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 2: APPLICATION FLOW -->
+        <section id="flow" class="section-content hidden">
+            <h2 class="text-2xl font-bold mb-6 text-blue-800">Java MVC System Flow</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="page-node shadow-sm">
+                    <span class="font-bold text-blue-600">Login (JSP)</span>: User enters credentials. Validated by <code>AuthServlet</code>. Session created.
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="page-node shadow-sm">
+                    <span class="font-bold text-blue-600">Dashboard (JSP)</span>: Fetches summary data via <code>DashboardServlet</code> using <code>EventBean</code>.
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="page-node shadow-sm bg-blue-50 border-blue-200">
+                    <span class="font-bold text-blue-600">Event Management (CRUD)</span>: 
+                    <p class="text-sm mt-1">Admin uses <code>ManageEventServlet</code> to update finisher times. Participant uses <code>RegisterServlet</code> to join runs.</p>
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="page-node shadow-sm">
+                    <span class="font-bold text-blue-600">Logout</span>: <code>session.invalidate()</code> called in <code>LogoutServlet</code>. Redirect to Login.
+>>>>>>> Stashed changes
                 </div>
             </div>
         </section>
 
+<<<<<<< Updated upstream
         <!-- SECTION 2: ERD -->
         <section id="erd" class="tab-content hidden">
             <div class="section-card">
@@ -101,7 +210,7 @@
                     <!-- Users -->
                     <div class="erd-table">
                         <div class="erd-header">USER</div>
-                        <div class="erd-row"><span class="pk">PK</span> user_id</div>
+                        <div class="erd-row font-bold text-white"><span class="pk">PK</span> user_id</div>
                         <div class="erd-row">first_name</div>
                         <div class="erd-row">last_name</div>
                         <div class="erd-row">gender</div>
@@ -113,31 +222,31 @@
                     <!-- Admin -->
                     <div class="erd-table border-[#ccff00]">
                         <div class="erd-header bg-[#ccff00] text-black">ADMIN</div>
-                        <div class="erd-row"><span class="pk">PK</span> admin_id</div>
-                        <div class="erd-row"><span class="fk">FK</span> user_id</div>
+                        <div class="erd-row font-bold text-white"><span class="pk">PK</span> admin_id</div>
+                        <div class="erd-row font-bold text-white"><span class="fk">FK</span> user_id</div>
                         <div class="erd-row">access_level</div>
                     </div>
                     <!-- Participants Staff -->
                     <div class="erd-table border-[#ccff00]">
                         <div class="erd-header bg-[#ccff00] text-black">STAFF</div>
-                        <div class="erd-row"><span class="pk">PK</span> staff_id</div>
-                        <div class="erd-row"><span class="fk">FK</span> user_id</div>
+                        <div class="erd-row font-bold text-white"><span class="pk">PK</span> staff_id</div>
+                        <div class="erd-row font-bold text-white"><span class="fk">FK</span> user_id</div>
                         <div class="erd-row">staff_no</div>
                         <div class="erd-row">department</div>
                     </div>
                     <!-- Participants Student -->
                     <div class="erd-table border-[#ccff00]">
                         <div class="erd-header bg-[#ccff00] text-black">STUDENT</div>
-                        <div class="erd-row"><span class="pk">PK</span> student_id</div>
-                        <div class="erd-row"><span class="fk">FK</span> user_id</div>
+                        <div class="erd-row font-bold text-white"><span class="pk">PK</span> student_id</div>
+                        <div class="erd-row font-bold text-white"><span class="fk">FK</span> user_id</div>
                         <div class="erd-row">course</div>
                         <div class="erd-row">faculty</div>
                     </div>
                     <!-- Advertisement -->
                     <div class="erd-table border-[#ccff00]">
                         <div class="erd-header bg-[#ccff00] text-black">ADVERTISEMENT</div>
-                        <div class="erd-row"><span class="pk">PK</span> ads_id</div>
-                        <div class="erd-row"><span class="fk">FK</span> admin_id</div>
+                        <div class="erd-row font-bold text-white"><span class="pk">PK</span> ads_id</div>
+                        <div class="erd-row font-bold text-white"><span class="fk">FK</span> admin_id</div>
                         <div class="erd-row">title</div>
                         <div class="erd-row">poster_image</div>
                         <div class="erd-row">description</div>
@@ -145,8 +254,8 @@
                     <!-- Activity Logs -->
                     <div class="erd-table border-[#ccff00]">
                         <div class="erd-header bg-[#ccff00] text-black">ACTIVITY_LOGS</div>
-                        <div class="erd-row"><span class="pk">PK</span> log_id</div>
-                        <div class="erd-row"><span class="fk">FK</span> user_id</div>
+                        <div class="erd-row font-bold text-white"><span class="pk">PK</span> log_id</div>
+                        <div class="erd-row font-bold text-white"><span class="fk">FK</span> user_id</div>
                         <div class="erd-row">distance_covered</div>
                         <div class="erd-row">finish_time</div>
                         <div class="erd-row">proof_url</div>
@@ -155,8 +264,8 @@
                     <!-- Events -->
                     <div class="erd-table border-purple-500">
                         <div class="erd-header bg-purple-500">EVENT</div>
-                        <div class="erd-row"><span class="pk">PK</span> event_id</div>
-                        <div class="erd-row"><span class="pk">FK</span> category_id</div>
+                        <div class="erd-row font-bold text-white"><span class="pk">PK</span> event_id</div>
+                        <div class="erd-row font-bold text-white"><span class="pk">FK</span> category_id</div>
                         <div class="erd-row">event_name</div>
                         <div class="erd-row">event_date</div>
                         <div class="erd-row">status</div>
@@ -167,19 +276,19 @@
                     <!-- Registrations -->
                     <div class="erd-table border-emerald-500">
                         <div class="erd-header bg-emerald-500">REGISTRATION</div>
-                        <div class="erd-row"><span class="pk">PK</span> reg_id</div>
-                        <div class="erd-row"><span class="fk">FK</span> user_id</div>
-                        <div class="erd-row"><span class="fk">FK</span> event_id</div>
-                        <div class="erd-row font-bold text-white">bib_number</div>
-                        <div class="erd-row font-bold text-white">payment_status</div>
-                        <div class="erd-row font-bold text-white">created_at</div>
+                        <div class="erd-row font-bold text-white"><span class="pk">PK</span> reg_id</div>
+                        <div class="erd-row font-bold text-white"><span class="fk">FK</span> user_id</div>
+                        <div class="erd-row font-bold text-white"><span class="fk">FK</span> event_id</div>
+                        <div class="erd-row">bib_number</div>
+                        <div class="erd-row">payment_status</div>
+                        <div class="erd-row">created_at</div>
                     </div>
                     <!-- Category -->
                     <div class="erd-table border-emerald-500">
                         <div class="erd-header bg-emerald-500">CATEGORY</div>
-                        <div class="erd-row"><span class="pk">PK</span> category_id</div>
-                        <div class="erd-row font-bold text-white">category_name</div>
-                        <div class="erd-row font-bold text-white">fee</div>
+                        <div class="erd-row font-bold text-white"><span class="pk">PK</span> category_id</div>
+                        <div class="erd-row">category_name</div>
+                        <div class="erd-row">fee</div>
                     </div>
                 </div>
             </div>
@@ -312,23 +421,108 @@
                                     </div>
                                 </div>
                             </div>
+=======
+        <!-- SECTION 3: UI MOCKUPS -->
+        <section id="mockups" class="section-content hidden">
+            <!-- Simulated Browser Window -->
+            <div class="border-4 border-slate-300 rounded-xl overflow-hidden bg-white shadow-2xl">
+                <!-- Browser Header -->
+                <div class="bg-slate-200 p-3 flex items-center gap-2 border-b">
+                    <div class="flex gap-1">
+                        <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                        <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                        <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                    </div>
+                    <div class="bg-white px-4 py-1 rounded text-xs text-slate-500 w-full max-w-md ml-4 border">
+                        localhost:8080/UniRun/dashboard.jsp
+                    </div>
+                </div>
+
+                <!-- Mockup Content Area -->
+                <div id="mock-content" class="min-h-[600px] p-8">
+                    <!-- Dashboard Mockup (Default) -->
+                    <div id="mock-dashboard">
+                        <div class="flex justify-between items-center mb-8">
+                            <h1 class="text-3xl font-bold text-slate-800">Community Dashboard</h1>
+                            <div class="text-sm bg-slate-100 p-2 rounded">Welcome, <b>Admin User</b></div>
+                        </div>
+
+                        <!-- Summary Cards -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <div class="bg-blue-600 text-white p-6 rounded-xl shadow-md">
+                                <div class="text-lg opacity-80">Total Distance</div>
+                                <div class="text-4xl font-bold">1,240.5 KM</div>
+                                <div class="text-xs mt-2">Across all 2024 events</div>
+                            </div>
+                            <div class="bg-emerald-600 text-white p-6 rounded-xl shadow-md">
+                                <div class="text-lg opacity-80">Total Runners</div>
+                                <div class="text-4xl font-bold">452</div>
+                                <div class="text-xs mt-2">Active participants</div>
+                            </div>
+                            <div class="bg-purple-600 text-white p-6 rounded-xl shadow-md">
+                                <div class="text-lg opacity-80">Avg. Finish Time</div>
+                                <div class="text-4xl font-bold">01:12:45</div>
+                                <div class="text-xs mt-2">10KM category average</div>
+                            </div>
+                        </div>
+
+                        <!-- Data Breakdown -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div class="border p-6 rounded-xl">
+                                <h3 class="font-bold mb-4 text-slate-700">Gender Distribution</h3>
+                                <div class="flex items-end gap-4 h-48">
+                                    <div class="w-1/2 bg-blue-400 rounded-t h-[65%] flex items-center justify-center text-white text-xs">Male (65%)</div>
+                                    <div class="w-1/2 bg-pink-400 rounded-t h-[35%] flex items-center justify-center text-white text-xs">Female (35%)</div>
+                                </div>
+                            </div>
+                            <div class="border p-6 rounded-xl">
+                                <h3 class="font-bold mb-4 text-slate-700">Recent Registrations</h3>
+                                <table class="w-full text-sm">
+                                    <tr class="border-b bg-slate-50">
+                                        <th class="text-left p-2">Name</th>
+                                        <th class="text-left p-2">Event</th>
+                                        <th class="text-left p-2">Bib</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border-b">Alex Tan</td>
+                                        <td class="p-2 border-b">Campus Fun Run</td>
+                                        <td class="p-2 border-b text-blue-600 font-mono">B-102</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border-b">Sarah Lee</td>
+                                        <td class="p-2 border-b">Virtual Marathon</td>
+                                        <td class="p-2 border-b text-blue-600 font-mono">V-889</td>
+                                    </tr>
+                                </table>
+                            </div>
+>>>>>>> Stashed changes
                         </div>
                     </div>
                 </div>
             </div>
 
+<<<<<<< Updated upstream
             <!-- Page Selection -->
             <div class="mt-8 flex justify-center gap-4">
                 <button onclick="renderMock('login')" class="text-xs font-bold uppercase tracking-widest px-6 py-2 border border-white/10 rounded-full hover:bg-white hover:text-black transition">Login View</button>
                 <button onclick="renderMock('register')" class="text-xs font-bold uppercase tracking-widest px-6 py-2 border border-white/10 rounded-full hover:bg-white hover:text-black transition">Registration</button>
                 <button onclick="renderMock('admin')" class="text-xs font-bold uppercase tracking-widest px-6 py-2 border border-white/10 rounded-full hover:bg-white hover:text-black transition">Result Management</button>
                 <button onclick="renderMock('dashboard')" class="text-xs font-bold uppercase tracking-widest px-6 py-2 neon-bg rounded-full font-black">Dashboard</button>
+=======
+            <!-- Mockup Navigation Control -->
+            <div class="mt-6 flex justify-center gap-4">
+                <button onclick="changeMockup('login')" class="bg-slate-700 text-white px-4 py-2 rounded hover:bg-slate-800 transition">View Login Page</button>
+                <button onclick="changeMockup('register')" class="bg-slate-700 text-white px-4 py-2 rounded hover:bg-slate-800 transition">View Registration</button>
+                <button onclick="changeMockup('admin')" class="bg-slate-700 text-white px-4 py-2 rounded hover:bg-slate-800 transition">View Admin CRUD</button>
+                <button onclick="changeMockup('dashboard')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">View Dashboard</button>
+>>>>>>> Stashed changes
             </div>
         </section>
 
     </div>
 
     <script>
+<<<<<<< Updated upstream
         function switchTab(btn, tabId) {
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -354,10 +548,33 @@
                             <input type="password" class="w-full bg-white/5 border border-white/10 p-3 rounded-xl focus:outline-none focus:border-[#ccff00] text-white" value="••••••••">
                         </div>
                         <button class="w-full neon-bg p-4 rounded-xl font-black uppercase italic tracking-widest mt-4">Initialize Session</button>
+=======
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        const mockTemplates = {
+            login: `
+                <div class="max-w-md mx-auto mt-20 p-8 border rounded-2xl shadow-lg bg-white">
+                    <h2 class="text-2xl font-bold mb-6 text-center text-blue-700">Uni-Run Login</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Username</label>
+                            <input type="text" class="w-full border p-2 rounded focus:ring-2 focus:ring-blue-500" value="admin_coordinator">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Password</label>
+                            <input type="password" class="w-full border p-2 rounded focus:ring-2 focus:ring-blue-500" value="••••••••">
+                        </div>
+                        <button class="w-full bg-blue-600 text-white py-2 rounded font-bold hover:bg-blue-700">Login</button>
+                        <p class="text-center text-sm text-slate-500">New runner? <span class="text-blue-600 underline cursor-pointer">Register here</span></p>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             `,
             register: `
+<<<<<<< Updated upstream
                 <div class="max-w-xl mx-auto">
                     <div class="mb-10 text-center">
                         <h2 class="text-3xl font-black text-white italic uppercase">Runner Registration</h2>
@@ -423,6 +640,69 @@
                                     <td class="p-4"><span class="bg-emerald-500/20 text-emerald-500 text-[10px] px-2 py-1 rounded">VERIFIED</span></td>
                                     <td class="p-4 text-right">
                                         <button class="text-red-500 font-bold text-xs uppercase hover:underline">Remove</button>
+=======
+                <div class="max-w-2xl mx-auto p-8 border rounded-2xl shadow-lg bg-white">
+                    <h2 class="text-2xl font-bold mb-6 text-blue-700">Runner Registration</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="col-span-2">
+                            <label class="block text-sm font-medium mb-1">Full Name</label>
+                            <input type="text" placeholder="John Doe" class="w-full border p-2 rounded">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Email</label>
+                            <input type="email" placeholder="john@university.edu" class="w-full border p-2 rounded border-red-300">
+                            <p class="text-xs text-red-500">Invalid email format.</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Age</label>
+                            <input type="number" class="w-full border p-2 rounded">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Gender</label>
+                            <select class="w-full border p-2 rounded"><option>Male</option><option>Female</option></select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Target Category</label>
+                            <select class="w-full border p-2 rounded"><option>5KM Fun Run</option><option>10KM Challenge</option></select>
+                        </div>
+                    </div>
+                    <button class="w-full mt-6 bg-emerald-600 text-white py-2 rounded font-bold hover:bg-emerald-700">Create Account</button>
+                </div>
+            `,
+            admin: `
+                <div class="max-w-4xl mx-auto">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-slate-800">Admin: Result Management</h2>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded text-sm">+ Add New Result</button>
+                    </div>
+                    <div class="bg-white rounded-xl shadow overflow-hidden border">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-100 border-b">
+                                <tr>
+                                    <th class="p-4">Bib #</th>
+                                    <th class="p-4">Runner Name</th>
+                                    <th class="p-4">Finish Time</th>
+                                    <th class="p-4 text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="p-4 font-mono font-bold">B-101</td>
+                                    <td class="p-4">Michael Jordan</td>
+                                    <td class="p-4"><input type="text" value="00:58:12" class="border p-1 rounded w-24"></td>
+                                    <td class="p-4 text-center">
+                                        <button class="text-blue-600 text-sm hover:underline mr-3">Update</button>
+                                        <button class="text-red-600 text-sm hover:underline">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-4 font-mono font-bold">B-102</td>
+                                    <td class="p-4">Simone Biles</td>
+                                    <td class="p-4"><input type="text" value="01:05:44" class="border p-1 rounded w-24"></td>
+                                    <td class="p-4 text-center">
+                                        <button class="text-blue-600 text-sm hover:underline mr-3">Update</button>
+                                        <button class="text-red-600 text-sm hover:underline">Delete</button>
+>>>>>>> Stashed changes
                                     </td>
                                 </tr>
                             </tbody>
@@ -430,11 +710,19 @@
                     </div>
                 </div>
             `,
+<<<<<<< Updated upstream
             dashboard: document.getElementById('mock-canvas').innerHTML
         };
 
         function renderMock(id) {
             document.getElementById('mock-canvas').innerHTML = templates[id];
+=======
+            dashboard: document.getElementById('mock-content').innerHTML
+        };
+
+        function changeMockup(type) {
+            document.getElementById('mock-content').innerHTML = mockTemplates[type];
+>>>>>>> Stashed changes
         }
     </script>
 </body>
