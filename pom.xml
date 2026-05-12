@@ -5,7 +5,7 @@
     <artifactId>Group_Test</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Group_Test-1.0-SNAPSHOT</name>
+    <name>UNI_RUN</name>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
