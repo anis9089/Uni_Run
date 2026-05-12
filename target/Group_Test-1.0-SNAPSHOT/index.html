@@ -108,6 +108,14 @@
                         <div class="erd-row">email</div>
                         <div class="erd-row">password</div>
                         <div class="erd-row">role</div>
+                        <div class="erd-row">no_phone</div>
+                    </div>
+                    <!-- Admin -->
+                    <div class="erd-table border-[#ccff00]">
+                        <div class="erd-header bg-[#ccff00] text-black">ADMIN</div>
+                        <div class="erd-row"><span class="pk">PK</span> admin_id</div>
+                        <div class="erd-row"><span class="fk">FK</span> user_id</div>
+                        <div class="erd-row">access_level</div>
                     </div>
                     <!-- Participants Staff -->
                     <div class="erd-table border-[#ccff00]">
@@ -117,31 +125,61 @@
                         <div class="erd-row">staff_no</div>
                         <div class="erd-row">department</div>
                     </div>
-                    <!-- Participants -->
+                    <!-- Participants Student -->
                     <div class="erd-table border-[#ccff00]">
-                        <div class="erd-header bg-[#ccff00] text-black">PRT_PROFILE</div>
-                        <div class="erd-row"><span class="pk">PK</span> profile_id</div>
+                        <div class="erd-header bg-[#ccff00] text-black">STUDENT</div>
+                        <div class="erd-row"><span class="pk">PK</span> student_id</div>
                         <div class="erd-row"><span class="fk">FK</span> user_id</div>
-                        <div class="erd-row">legal_name</div>
-                        <div class="erd-row">age_cat</div>
-                        <div class="erd-row">gender</div>
+                        <div class="erd-row">course</div>
+                        <div class="erd-row">faculty</div>
+                    </div>
+                    <!-- Advertisement -->
+                    <div class="erd-table border-[#ccff00]">
+                        <div class="erd-header bg-[#ccff00] text-black">ADVERTISEMENT</div>
+                        <div class="erd-row"><span class="pk">PK</span> ads_id</div>
+                        <div class="erd-row"><span class="fk">FK</span> admin_id</div>
+                        <div class="erd-row">title</div>
+                        <div class="erd-row">poster_image</div>
+                        <div class="erd-row">description</div>
+                    </div>
+                    <!-- Activity Logs -->
+                    <div class="erd-table border-[#ccff00]">
+                        <div class="erd-header bg-[#ccff00] text-black">ACTIVITY_LOGS</div>
+                        <div class="erd-row"><span class="pk">PK</span> log_id</div>
+                        <div class="erd-row"><span class="fk">FK</span> user_id</div>
+                        <div class="erd-row">distance_covered</div>
+                        <div class="erd-row">finish_time</div>
+                        <div class="erd-row">proof_url</div>
+                        <div class="erd-row">submitted_at</div>
                     </div>
                     <!-- Events -->
                     <div class="erd-table border-purple-500">
-                        <div class="erd-header bg-purple-500">EVT_MASTER</div>
+                        <div class="erd-header bg-purple-500">EVENT</div>
                         <div class="erd-row"><span class="pk">PK</span> event_id</div>
-                        <div class="erd-row">title</div>
-                        <div class="erd-row">target_km</div>
+                        <div class="erd-row"><span class="pk">FK</span> category_id</div>
+                        <div class="erd-row">event_name</div>
                         <div class="erd-row">event_date</div>
+                        <div class="erd-row">status</div>
+                        <div class="erd-row">quota</div>
+                        <div class="erd-row">event_location</div>
+                        <div class="erd-row">certification</div>
                     </div>
                     <!-- Registrations -->
                     <div class="erd-table border-emerald-500">
-                        <div class="erd-header bg-emerald-500">REG_TRANS</div>
+                        <div class="erd-header bg-emerald-500">REGISTRATION</div>
                         <div class="erd-row"><span class="pk">PK</span> reg_id</div>
-                        <div class="erd-row"><span class="fk">FK</span> profile_id</div>
+                        <div class="erd-row"><span class="fk">FK</span> user_id</div>
                         <div class="erd-row"><span class="fk">FK</span> event_id</div>
                         <div class="erd-row font-bold text-white">bib_number</div>
-                        <div class="erd-row font-bold text-white">finish_time</div>
+                        <div class="erd-row font-bold text-white">payment_status</div>
+                        <div class="erd-row font-bold text-white">created_at</div>
+                    </div>
+                    <!-- Category -->
+                    <div class="erd-table border-emerald-500">
+                        <div class="erd-header bg-emerald-500">CATEGORY</div>
+                        <div class="erd-row"><span class="pk">PK</span> category_id</div>
+                        <div class="erd-row font-bold text-white">category_name</div>
+                        <div class="erd-row font-bold text-white">fee</div>
                     </div>
                 </div>
             </div>
