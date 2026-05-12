@@ -100,11 +100,22 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Users -->
                     <div class="erd-table">
-                        <div class="erd-header">USR_ACCOUNT</div>
+                        <div class="erd-header">USER</div>
                         <div class="erd-row"><span class="pk">PK</span> user_id</div>
-                        <div class="erd-row">username</div>
-                        <div class="erd-row">password_hash</div>
-                        <div class="erd-row">access_level</div>
+                        <div class="erd-row">first_name</div>
+                        <div class="erd-row">last_name</div>
+                        <div class="erd-row">gender</div>
+                        <div class="erd-row">email</div>
+                        <div class="erd-row">password</div>
+                        <div class="erd-row">role</div>
+                    </div>
+                    <!-- Participants Staff -->
+                    <div class="erd-table border-[#ccff00]">
+                        <div class="erd-header bg-[#ccff00] text-black">STAFF</div>
+                        <div class="erd-row"><span class="pk">PK</span> staff_id</div>
+                        <div class="erd-row"><span class="fk">FK</span> user_id</div>
+                        <div class="erd-row">staff_no</div>
+                        <div class="erd-row">department</div>
                     </div>
                     <!-- Participants -->
                     <div class="erd-table border-[#ccff00]">
